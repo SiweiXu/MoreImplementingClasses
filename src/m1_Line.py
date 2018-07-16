@@ -219,6 +219,8 @@ class Line(object):
         self.start = start.clone()
         self.end = end.clone()
         self.count_clones = 0
+        self.oristart = start
+        self.oriend = end
         # --------------------------------------------------------------
         # DONE: 3.
         #   a. READ the above specification, including the Example.
@@ -565,8 +567,11 @@ class Line(object):
           :type  other_line: Line
           :rtype: Line:
         """
+        newstart = Point(self.start.x - other_line.start.x, self.start.y - other_line.start.y)
+        newend = Point(self.end.x - other_line.end.x, self.end.y - other_line.end.y)
+        return Line(newstart, newend)
         # --------------------------------------------------------------
-        # TODO: 10.
+        # DONE: 10.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -592,8 +597,11 @@ class Line(object):
         Type hints:
           :rtype: Point
         """
+        mid = Point((self.start.x + self.end.x) / 2, (self.start.y + self.end.y) / 2)
+
+        return mid
         # --------------------------------------------------------------
-        # TODO: 11.
+        # DONE: 11.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -628,6 +636,12 @@ class Line(object):
           :type  line2: Line
           :rtype: bool
         """
+
+        if self.slope() == line2.slope():
+            return True
+        else:
+            return False
+
         # --------------------------------------------------------------
         # TODO: 12.
         #   a. READ the above specification, including the Example.
@@ -693,8 +707,10 @@ class Line(object):
             print(line1)  # Should print: Line[(-3, -4), (3, 4)]
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
+        self.start = self.oristart
+        self.end = self.oriend
         # --------------------------------------------------------------
-        # TODO: 13.
+        # DONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
