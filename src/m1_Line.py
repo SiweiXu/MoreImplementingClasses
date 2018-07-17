@@ -637,10 +637,15 @@ class Line(object):
           :rtype: bool
         """
 
-        if self.slope() == line2.slope():
-            return True
-        else:
-            return False
+        slope1 = self.slope()
+        slope2 = line2.slope()
+
+        if slope1 == slope2:
+            if slope1 == math.inf or round(slope1) == round(slope2):
+                return True
+            else:
+                return False
+
 
         # --------------------------------------------------------------
         # TODO: 12.
