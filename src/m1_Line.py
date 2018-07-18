@@ -641,13 +641,13 @@ class Line(object):
         slope2 = line2.slope()
 
         if slope1 == slope2:
-            if slope1 == slope2 == math.inf or round(slope1) == round(slope2):
+            if slope1 == slope2 or round(slope1) == round(slope2):
                 return True
         else:
             return False
 
         # --------------------------------------------------------------
-        # TODO: 12.
+        # DONE: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
