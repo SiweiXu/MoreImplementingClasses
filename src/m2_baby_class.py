@@ -102,11 +102,12 @@ class Baby(object):
 
     def hour_passes(self):
         self.count += 1
-        if self.count == 1:
-            print('Baby', self.name, 'is sleeping.')
-        if self.count == 2:
-            print('Baby', self.name, 'is awake. Time for food.')
-        if self.count >= 3:
+        if self.count <3:
+            if self.count == 1:
+                print('Baby', self.name, 'is sleeping.')
+            if self.count == 2:
+                print('Baby', self.name, 'is awake. Time for food.')
+        else:
             print('Baby', self.name, 'is CRYING uncontrollably! Feed the baby!')
 
 
