@@ -16,10 +16,10 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    run_test_simple_t()
+    run_test_set_colors()
+    run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -145,13 +145,13 @@ class CapitalT(object):
                               self.intersection_center.y - (0.5 * self.letter_thickness))
         h_bottom_right = rg.Point(self.intersection_center.x + (0.5 * self.width),
                                   self.intersection_center.y + (0.5 * self.letter_thickness))
-        h_rect = rg.Rectangle(h_top_left, h_bottom_right)
+        self.h_rect = rg.Rectangle(h_top_left, h_bottom_right)
 
         v_top_left = rg.Point(self.intersection_center.x - (0.5 * self.letter_thickness),
                               self.intersection_center.y - (0.5 * self.letter_thickness))
         v_bottom_right = rg.Point(self.intersection_center.x + (0.5 * self.letter_thickness),
                                   self.intersection_center.y + self.height - (0.5 * letter_thickness))
-        v_rect = rg.Rectangle(v_top_left, v_bottom_right)
+        self.v_rect = rg.Rectangle(v_top_left, v_bottom_right)
         # --------------------------------------------------------------
         # DONE: 3.
         #   READ the above specification, including the Example.
@@ -177,8 +177,14 @@ class CapitalT(object):
         Type hints:
           :type window: rg.RoseWindow
         """
+
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
+
+        window.render()
+
         # --------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   READ the above specification, including the Example.
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
@@ -204,8 +210,14 @@ class CapitalT(object):
           :type fill_color: str
           :type outline_color: str
         """
+        self.h_rect.fill_color = fill_color
+        self.v_rect.fill_color = fill_color
+
+        self.h_rect.outline_color = outline_color
+        self.v_rect.outline_color = outline_color
+
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
@@ -234,8 +246,10 @@ class CapitalT(object):
           :type dx: int
           :type dy: int
         """
+        self.v_rect.move_by(dx, dy)
+        self.h_rect.move_by(dx, dy)
         # --------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
@@ -262,8 +276,11 @@ class CapitalT(object):
         Type hints:
           :rtype: CapitalT
         """
+        rect_cloned = CapitalT(self.intersection_center, self.width, self.height, self.letter_thickness)
+        rect_cloned.set_colors(self.h_rect.fill_color, self.h_rect.outline_color)
+        return rect_cloned
         # --------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
